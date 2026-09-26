@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Día de los Hot Wheels, mi amor!</title>
+    <style>
+        :root {
+            --primary: #ff1d25;
+            --secondary: #ff8c00;
+            --accent: #ffcc00;
+            --card-bg: rgba(20, 20, 20, 0.88);
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            /* Fondo de Hot Wheels */
+            background: #0d0d0d url('https://i.pinimg.com/736x/87/42/ed/8742ed4121ea2f79cebbcf630e2ea84b.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 30px 25px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 140, 0, 0.4);
+            border: 2px solid var(--secondary);
+        }
+
+        .tag-para {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .flame-icon {
+            font-size: 3rem;
+            display: inline-block;
+            margin: 10px 0;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px #ff1d25); }
+            100% { transform: scale(1.15); filter: drop-shadow(0 0 15px #ff8c00); }
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff1d25, #ff8c00);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 29, 37, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 0, 0.6);
+            background: linear-gradient(135deg, #ff8c00, #ffcc00);
+            color: #000;
+        }
+
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--secondary);
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .carta {
+            text-align: left;
+            line-height: 1.6;
+            background: rgba(35, 35, 35, 0.9);
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 5px solid var(--secondary);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+        }
+
+        .carta p {
+            margin: 8px 0;
+        }
+
+        .firma {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1rem;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="tag-para">Para: Eduardo</div>
+        <div class="flame-icon">🔥🏎️</div>
+        <h1>¡Una sorpresa especial para ti!</h1>
+        <p>Abre las cartas que preparé para ti:</p>
+
+        <div class="btn-group">
+            <button class="btn" onclick="mostrarCarta('carta1')">✉️ Ver Primera Sorpresa</button>
+            <button class="btn" onclick="mostrarCarta('carta2')">🔥 Ver Segunda Sorpresa</button>
+        </div>
+
+        <!-- CARTA 1 -->
+        <div id="carta1" class="hidden-content">
+            <div class="carta">
+                <p>Hola mi amor,</p>
+                <p>Solo quería prepararte este pequeño detalle para recordarte lo mucho que te quiero y lo importante que eres para mí.</p>
+                <p>¡Gracias por estar siempre ahí y hacerme tan feliz!</p>
+            </div>
+            <div class="firma">Con todo mi amor,<br>De: Nati</div>
+        </div>
+
+        <!-- CARTA 2 -->
+        <div id="carta2" class="hidden-content">
+            <div class="carta">
+                <p><strong>¡Feliz día de los Hotwheels, mi amor! 🏎️🔥</strong></p>
+                <p>Eres mi vida, mi motor, y mi razón de sonreír.</p>
+                <p>Gracias por ser parte de mi vida.</p>
+                <p><strong>¡Te amo bonitooo! 💙✨</strong></p>
+            </div>
+            <div class="firma">De: Nati</div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarCarta(id) {
+            // Ocultar ambas cartas primero
+            document.getElementById('carta1').style.display = 'none';
+            document.getElementById('carta2').style.display = 'none';
+
+            // Mostrar la seleccionada
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
